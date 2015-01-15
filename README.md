@@ -34,7 +34,7 @@ grunt.initConfig({
           locales: [{name: 'ru_RU', folder: 'ru'}, 'en'],
           poFilesPath: 'tmp/i18n/<%= locale%>/<%= potFileName%>.po',
       },
-      src: ['test/fixtures/*.pot']
+      src: ['test/fixtures/myDomain.pot']
     }
   },
 });
@@ -42,12 +42,12 @@ grunt.initConfig({
 
 You should specify:
 * **locales** - list of locales
-* **poFilesPath** -  template for PO files location.
+* **poFilesPath** -  template for *.po files location.
 * **src** - location of *.pot files.
 
 Task in example above will create/update *.po files:
-* tmp/i18n/ru/<%= potFileName%>.po
-* tmp/i18n/en/<%= potFileName%>.po
+* tmp/i18n/ru/myDomain.po
+* tmp/i18n/en/myDomain.po
 
 ### Options
 
@@ -55,46 +55,60 @@ Task in example above will create/update *.po files:
 Type: `Array`
 Default value: []
 
-A string value that is used to do something with whatever.
+List of locales:
+```js
+[{name: 'ru_RU', folder: 'ru'}, 'en']
+```
 
-#### options.punctuation
+If locale is an Object:
+* name - will be passed to msginit --locale=name
+* folder - will be used as locale variable in poFilesPath template (folder name).
+
+#### options.poFilesPath
 Type: `String`
-Default value: `'.'`
+Default value: `''`
 
-A string value that is used to do something else with whatever else.
-
-### Usage Examples
-
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
+Template for *.po files location:
 ```js
-grunt.initConfig({
-  msg_init_merge: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
+tmp/i18n/<%= locale%>/<%= potFileName%>.po
+```
+Available variables:
+* locale - locale folder
+* potFileName - name of a *.pot file
+
+#### options.msgInit
+Type: `Object`
+Default value: ```js
+msgInit : {
+    cmd : 'msginit',
+    opts : {}
+}
 ```
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
+You can specify path to msginit or additional options:
 ```js
-grunt.initConfig({
-  msg_init_merge: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
+msgInit : {
+    cmd : '/opt/local/bin/msginit',
+    opts : {
+        width : 50
+    }
+}
+```
+#### options.msgMerge
+Type: `Object`
+Default value: ```js
+msgMerge : {
+    cmd : 'msgmerge',
+    opts : {}
+}
 ```
 
-## Release History
-_(Nothing yet)_
+You can specify path to msgmerge or additional options:
+```js
+msgMerge : {
+    cmd : '/opt/local/bin/msgmerge',
+    opts : {
+        width : 50
+    }
+}
+```
