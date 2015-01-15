@@ -53,6 +53,7 @@ Task in example above will create/update *.po files:
 
 #### options.locales
 Type: `Array`
+
 Default value: []
 
 List of locales:
@@ -66,6 +67,7 @@ If locale is an Object:
 
 #### options.poFilesPath
 Type: `String`
+
 Default value: `''`
 
 Template for *.po files location:
@@ -78,6 +80,7 @@ Available variables:
 
 #### options.msgInit
 Type: `Object`
+
 Default value: ```js
 msgInit : {
     cmd : 'msginit',
@@ -96,6 +99,7 @@ msgInit : {
 ```
 #### options.msgMerge
 Type: `Object`
+
 Default value: ```js
 msgMerge : {
     cmd : 'msgmerge',
