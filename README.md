@@ -21,9 +21,8 @@ grunt.loadNpmTasks('grunt-msg-init-merge');
 
 ### Overview
 This task runs for each locale:
-**msginit** if **.po** file does not exist to create it.
-
-**msgmerge** if **.po** file exists to update it with new keywords.
+* **msginit** if **.po** file does not exist to create it.
+* **msgmerge** if **.po** file exists to update it with new keywords.
 
 In your project's Gruntfile, add a section named `msgInitMerge` to the data object passed into `grunt.initConfig()`.
 
@@ -42,11 +41,9 @@ grunt.initConfig({
 ```
 
 You should specify:
-**locales** - list of locales
-
-**poFilesPath** -  template for PO files location.
-
-**src** - location of *.pot files.
+* **locales** - list of locales
+* **poFilesPath** -  template for PO files location.
+* **src** - location of *.pot files.
 
 Task in example above will create/update *.po files:
 * tmp/i18n/ru/<%= potFileName%>.po
