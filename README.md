@@ -56,7 +56,7 @@ Type: `Array`
 
 Default value: []
 
-List of locales:
+List of locales, e.g.:
 ```js
 [{name: 'ru_RU', folder: 'ru'}, 'en']
 ```
@@ -70,7 +70,7 @@ Type: `String`
 
 Default value: `''`
 
-Template for *.po files location:
+Template for *.po files location, e.g.:
 ```js
 tmp/i18n/<%= locale%>/<%= potFileName%>.po
 ```
@@ -81,7 +81,8 @@ Available variables:
 #### options.msgInit
 Type: `Object`
 
-Default value: ```js
+Default value:
+```js
 msgInit : {
     cmd : 'msginit',
     opts : {}
@@ -100,7 +101,8 @@ msgInit : {
 #### options.msgMerge
 Type: `Object`
 
-Default value: ```js
+Default value:
+```js
 msgMerge : {
     cmd : 'msgmerge',
     opts : {}
