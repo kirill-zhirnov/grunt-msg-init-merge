@@ -1,7 +1,7 @@
 {
   "name": "grunt-msg-init-merge",
   "description": "Grunt task for msginit and msgmerge",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/kirill-zhirnov/grunt-msg-init-merge",
   "author": {
     "name": "Kirill Zhirnov",
@@ -31,6 +31,7 @@
     "grunt-contrib-jshint": "^0.9.2",
     "grunt-contrib-clean": "^0.5.0",
     "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt-contrib-copy": "^0.7.0",
     "grunt": "~0.4.5"
   },
   "peerDependencies": {
@@ -43,7 +44,6 @@
   ],
   "dependencies": {
     "async": "^0.9.0",
-    "extend": "^2.0.0",
-    "grunt-contrib-copy": "^0.7.0"
+    "extend": "^2.0.0"
   }
 }
