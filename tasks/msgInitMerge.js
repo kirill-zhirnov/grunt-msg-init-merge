@@ -13,6 +13,20 @@ var path = require('path'),
 	async = require('async')
 ;
 
+function objToCmdArgs(options)
+{
+	var out = [];
+	Object.getOwnPropertyNames(options).forEach(function(key) {
+		if (options[key] === true) {
+			out.push('--' + key);
+		} else if (options[key] !== false) {
+			out.push('--' + key + '=' + options[key]);
+		}
+	});
+
+	return out;
+}
+
 module.exports = function (grunt) {
 
 	grunt.registerMultiTask('msgInitMerge', 'Grunt task for msginit and msgmerge', function () {
@@ -62,10 +76,10 @@ module.exports = function (grunt) {
 						}
 					});
 
-				;
 				poFilePath = path.resolve(poFilePath);
 
 				//if file exists - run msgmerge, else - msginit
+				var spawnOptions;
 				if (grunt.file.exists(poFilePath)) {
 					var args = objToCmdArgs(extend(true, {
 						'update' : true
@@ -73,24 +87,24 @@ module.exports = function (grunt) {
 
 					args = args.concat([poFilePath, potFilePath]);
 
-					var spawnOptions = {
+					spawnOptions = {
 						cmd : options.msgMerge.cmd,
 						args : args
-					}
+					};
 				} else {
 					var dir = path.dirname(poFilePath);
 					if (!grunt.file.isDir(dir)) {
 						grunt.file.mkdir(dir);
 					}
 
-					var spawnOptions = {
+					spawnOptions = {
 						cmd : options.msgInit.cmd,
 						args : objToCmdArgs(extend(true, {
 							'input' : potFilePath,
 							'output-file' : poFilePath,
 							'locale' : localeName
 						}, options.msgInit.opts))
-					}
+					};
 				}
 
 				asyncSpawns.push(spawnOptions);
@@ -106,17 +120,3 @@ module.exports = function (grunt) {
 		});
 	});
 };
-
-function objToCmdArgs(options)
-{
-	var out = [];
-	Object.getOwnPropertyNames(options).forEach(function(key) {
-		if (options[key] === true) {
-			out.push('--' + key);
-		} else if (options[key] !== false) {
-			out.push('--' + key + '=' + options[key]);
-		}
-	});
-
-	return out;
-}
