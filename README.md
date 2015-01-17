@@ -30,11 +30,11 @@ In your project's Gruntfile, add a section named `msgInitMerge` to the data obje
 grunt.initConfig({
   msgInitMerge: {
     your_target: {
+      src: ['test/fixtures/myDomain.pot'],
       options: {
           locales: [{name: 'ru_RU', folder: 'ru'}, 'en'],
           poFilesPath: 'tmp/i18n/<%= locale%>/<%= potFileName%>.po',
-      },
-      src: ['test/fixtures/myDomain.pot']
+      }
     }
   },
 });
@@ -48,6 +48,8 @@ You should specify:
 Task in example above will create/update *.po files:
 * tmp/i18n/ru/myDomain.po
 * tmp/i18n/en/myDomain.po
+
+Specifying target (e.g. "your target") is necessary!
 
 ### Options
 
