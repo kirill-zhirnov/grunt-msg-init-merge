@@ -100,6 +100,9 @@ msgInit : {
     }
 }
 ```
+
+*The 'cmd' property must be present if you decide to specify additional options*
+
 #### options.msgMerge
 Type: `Object`
 
@@ -120,3 +123,4 @@ msgMerge : {
     }
 }
 ```
+*The 'cmd' property must be present if you decide to specify additional options*
