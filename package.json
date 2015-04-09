@@ -1,7 +1,7 @@
 {
   "name": "grunt-msg-init-merge",
   "description": "Grunt task for msginit and msgmerge",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "homepage": "https://github.com/kirill-zhirnov/grunt-msg-init-merge",
   "author": {
     "name": "Kirill Zhirnov",
