@@ -79,6 +79,7 @@ tmp/i18n/<%= locale%>/<%= potFileName%>.po
 Available variables:
 * locale - locale folder
 * potFileName - name of a *.pot file
+* potDirName - dir path of a *.pot file
 
 #### options.msgInit
 Type: `Object`

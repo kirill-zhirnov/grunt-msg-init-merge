@@ -72,7 +72,8 @@ module.exports = function (grunt) {
 					poFilePath = grunt.template.process(poFilesPath, {
 						data : {
 							locale: localeFolder,
-							potFileName: potFileName
+							potFileName: potFileName,
+							potDirName: path.dirname(potFilePath)
 						}
 					});
 
